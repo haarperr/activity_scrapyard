@@ -6,12 +6,12 @@ version '1.0.0'
 client_scripts {
 	'config/config.lua',
 	'config/cars.lua',
-    'shared/scrapyards.lua',
-    'client/main.lua',
+    	'shared/scrapyards.lua',
+    	'client/main.lua',
 	'client/util.lua',
 	'client/yard.lua',
-    'client/car.lua',
-    'client/forklift.lua'
+    	'client/car.lua',
+    	'client/forklift.lua'
 }
 
 server_scripts {
