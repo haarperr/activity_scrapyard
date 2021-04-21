@@ -28,3 +28,30 @@ scrapYards.elBurro = {
 	destroyZone = {x = 1507.30, y = -2138.38, z = 76.59, radius = 160.00},
 	forkliftReturnZone = {x = 1560.05, y = -2140.72, z = 77.03, radius = 30.00},
 }
+
+scrapYards.rogers = {
+	id = "rogers",
+	name = "Rogers Salvage and Scrap",
+	active = true,
+	pos = vector3(-442.15, -1704.79, 18.88),
+	activeRange = 5000.0,
+	maxWorkers = 4,
+	workers = {},
+	foreman = { x = -425.17, y = -1698.52, z = 19.07, heading = 97.2, model = "s_m_m_cntrybar_01" },
+	liftSpawns = {
+		{ x = -449.74, y = -1717.48, z = 18.76, heading = 78.2 },
+		{ x = -450.45, y = -1721.53, z = 18.65, heading = 49.9 },
+		{ x = -453.05, y = -1723.93, z = 18.69, heading = 21.66 },
+		{ x = -457.25, y = -1724.67, z = 18.69, heading = 96.64 },
+	},
+	carSpawns = {
+		{ x = -469.21, y = -1669.62, z = 19.0, heading = 285.47 },
+		{ x = -509.07, y = -1735.44, z = 19.09, heading = 351.77 },
+		{ x = -500.36, y = -1700.5, z = 19.32, heading = 226.49 },
+		{ x = -525.25, y = -1678.36, z = 19.24, heading = 272.26 },
+		{ x = -542.51, y = -1681.27, z = 19.4, heading = 206.76 },
+	},
+	scrapZone = {x = -474.35, y = -1708.74, z = 18.72, radius = 150.00},
+	destroyZone = {x = -524.03, y = -1720.54, z = 19.21, radius = 120.00},
+	forkliftReturnZone = {x = -455.9, y = -1720.95, z = 18.68, radius = 50.00},
+}
