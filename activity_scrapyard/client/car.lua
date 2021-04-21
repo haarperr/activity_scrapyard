@@ -87,8 +87,6 @@ function StartCarThread(_vehicle) -- Creates instance of a junk car
 	end)
 end
 
-
-
 -- == Utility ==
 function GetVehicleDimensions(_vehicle)
 	local min,max = GetModelDimensions(GetEntityModel(_vehicle))
