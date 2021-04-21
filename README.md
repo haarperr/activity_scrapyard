@@ -3,7 +3,7 @@
 # Description
 Upon accepting a scrapyard job, the player is randomly assigned a scrapyard. After arriving at the scrapyard and requesting a forklift, the player will begin picking up cars around the scrapyard, scrapping them for materials, and taking the scrapped cars to a drop-off to be destroyed.
 
-## [Demo](https://streamable.com/)
+## [Demo](https://streamable.com/w7f7r3)
 
 ## Config
 **shared/scrapyards.lua** - Each scrapyard has many variables which can be changed, including where the cars can spawn, where the scrap/destroy zones are, how many workers can be active at a time, and more.
