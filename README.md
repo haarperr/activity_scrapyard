@@ -31,3 +31,6 @@ There are some changes I would make if this were to be added to NoPixel. First, 
 To scrap a car, the player only needs to press 'E' near a vehicle and wait out the duration of the animation. NoPixel's Quick Time Event system could easily be implemented, both to add a sense of actually taking time to scrap a part, and to determine the success of scrapping a part, if desired.
 
 I soon plan to implement the gaining of materials after scrapping car parts. I left cars enterable to leave room for random items to be added to the glovebox/trunk of each car. This would allow players to search each car for money, random items, or even rare items such as NOS or flashdrives. 
+
+# Notes
+This was a very fun project to work on. Before taking on this task, I had never made scripts for FiveM, and was only limited to my knowledge from working on RedM for a few months. I haven't worked on RedM in a while, as my first freshman semester and other projects have been taking up most of my time. I plan to add to this project in between exams, refining it and ensuring it will work seamlessly with NoPixel's current system should you choose to add it. I just wanted to make my current progress public to show that I have been putting a lot of effort into it when I can.
