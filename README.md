@@ -13,7 +13,7 @@ Upon accepting a scrapyard job, the player is randomly assigned a scrapyard. Aft
 **config/config.lua** - The activity's name, description, task info, and the number of cars to scrap per job can all be altered here.
 
 # Performance
-Performance was kept in mind during every step of creating this resource. The job itself operates on one main thread, halting in between steps. Every car spawned during the job with also operates on a single thread which is used to let the player interact with it by picking it up, moving it around, and scrapping it. In my testing, I have not seen the script go above 0.09ms in the resource monitor the job is active.
+Performance was kept in mind during every step of creating this resource. The job itself operates on one main thread, halting in between steps. Every car spawned during the job with also operates on a single thread which is used to let the player interact with it by picking it up, moving it around, and scrapping it. In my testing, I have not seen the script go above 0.09ms in the resource monitor while the job is active.
 
 # Implementation
 Implementation into NoPixel's activity framework should be relatively effortless. The activity uses the appropriate np-activities exports to ensure the activity begins and ends correctly, with each task updating in between. 
