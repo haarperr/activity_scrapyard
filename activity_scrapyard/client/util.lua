@@ -1,8 +1,7 @@
 function GetRandomCarsToScrap() -- Used to determine number of junk cars in activity
 	local min = Config.min_cars_to_scrap
 	local max = Config.max_cars_to_scrap
-    return 1
-	-- return math.random(min, max)
+	return math.random(min, max)
 end
 
 function IsItemInTable(_item, _table)
