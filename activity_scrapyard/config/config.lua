@@ -1,5 +1,7 @@
 Config = {}
 
+Config.debug_mode = true
+
 Config.activity_name = "scrapyard_worker"
 Config.activity_description = "Use a forklift to move wrecked cars around a scrapyard, salvage them for materials, and prepare them to be destroyed."
 
