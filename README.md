@@ -1,7 +1,15 @@
 # activity_scrapyard
 
 # Description
-Upon accepting a scrapyard job, the player is randomly assigned a scrapyard. After arriving at the scrapyard and requesting a forklift, the player will begin picking up cars around the scrapyard, scrapping them for materials, and taking the scrapped cars to a drop-off to be destroyed.
+Upon accepting a scrapyard job, the player is randomly assigned a scrapyard. After arriving at the scrapyard and requesting a forklift, the player will begin picking up cars around the scrapyard, scrapping them for materials, and taking the scrapped cars to a drop-off to be destroyed. The flow of the job is as follows:
+1. Go to the scrapyard
+2. Ask for a forklift
+3. Scrap cars
+  * Pick up car with forklift
+  * Take car to the yard's scrap zone
+  * Scrap the car's windows, doors, tires, and its engine
+  * Take the car to the destroy zone
+4. Return the forklift
 
 ## [Demo](https://streamable.com/w7f7r3)
 
