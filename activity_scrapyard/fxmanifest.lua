@@ -8,6 +8,8 @@ client_scripts {
 	'config/cars.lua',
     'shared/scrapyards.lua',
     'client/main.lua',
+	'client/util.lua',
+	'client/yard.lua',
     'client/car.lua',
     'client/forklift.lua'
 }
@@ -16,8 +18,4 @@ server_scripts {
 	'shared/scrapyards.lua',
 	'config/config.lua',
 	'server/main.lua',
-}
-
-dependencies {
-	'np-activities',
 }
