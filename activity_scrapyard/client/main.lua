@@ -39,59 +39,60 @@ AddTextEntry("ScrapZoneBlipName", "Car Scrap Area")
 
 -- == Main Job Thread ==
 function StartScrapJob(_yard)
-	Citizen.CreateThread(function() 
+	Citizen.CreateThread(function()
 		yard = _yard
 		jobActive = true
 		EnsureVariableReset()
+		while jobActive do
+			-- == Task 1 - Go to scrapyard ==
+			StartTask(tasks[1])
+			
+			AwaitYardArrival()
+			
+			SpawnForeman()
+			
+			CompleteTask(tasks[1])
+			RemoveBlip(yardBlip)
 
-		-- == Task 1 - Go to scrapyard ==
-		StartTask(tasks[1])
-		
-		AwaitYardArrival()
-		
-		SpawnForeman()
-		
-		CompleteTask(tasks[1])
-		RemoveBlip(yardBlip)
+			-- == Task 2 - Ask foreman for forklift ==
+			StartTask(tasks[2])
+			
+			AwaitForkliftRequested() -- Halt thread until forklift requested
+			
+			CompleteTask(tasks[2])
 
-		-- == Task 2 - Ask foreman for forklift ==
-		StartTask(tasks[2])
-		
-		AwaitForkliftRequested() -- Halt thread until forklift requested
-		
-		CompleteTask(tasks[2])
+			-- == Task 3 - Get in forklift ==
+			forklift = SpawnForklift()
+			forkliftBlip = CreateForkliftBlip(forklift)
 
-		-- == Task 3 - Get in forklift ==
-		forklift = SpawnForklift()
-		forkliftBlip = CreateForkliftBlip(forklift)
+			StartTask(tasks[3])
+			
+			AwaitSeatForklift() -- Halt thread until player seated
+			
+			RemoveBlip(forkliftBlip)
+			CompleteTask(tasks[3])
 
-		StartTask(tasks[3])
-		
-		AwaitSeatForklift() -- Halt thread until player seated
-		
-		RemoveBlip(forkliftBlip)
-		CompleteTask(tasks[3])
+			nCarsToScrap = GetRandomCarsToScrap()
+			SpawnJunkCar(GetRandomCarModel()) -- Spawn the first junk car
 
-		nCarsToScrap = GetRandomCarsToScrap()
-		SpawnJunkCar(GetRandomCarModel()) -- Spawn the first junk car
+			-- == Task 4-7: Scrap all cars ==
+			local jobCompleted = false
+			while not jobCompleted do
+				jobCompleted = nCarsToScrap <= 0
+				Citizen.Wait(2000)
+			end
 
-		-- == Task 4-7: Scrap all cars ==
-		local jobCompleted = false
-		while not jobCompleted do
-			jobCompleted = nCarsToScrap <= 0
-			Citizen.Wait(2000)
+			-- == Task 5: Return forklift ==
+			forkliftReturnBlip = CreateForkliftReturnBlip(yard.forkliftReturnZone)
+			StartTask(tasks[8])
+
+			AwaitForkliftReturned() -- Halt thread until forklift returned and player unseated
+			
+			CompleteTask(tasks[8])
+
+			-- == Job is completed ==
+			CompleteScrapJob()
 		end
-
-		-- == Task 5: Return forklift ==
-		forkliftReturnBlip = CreateForkliftReturnBlip(yard.forkliftReturnZone)
-		StartTask(tasks[8])
-
-		AwaitForkliftReturned() -- Halt thread until forklift returned and player unseated
-		
-		CompleteTask(tasks[8])
-
-		-- == Job is completed ==
-		CompleteScrapJob()
 	end)
 end
 
@@ -111,6 +112,7 @@ end
 function ActivityFailed(_reason)
 	jobActive = false
 	exports["np-activities"]:activityCompleted(activityName, playerServerId, false, _reason)
+	TriggerServerEvent(("%s:jobEnded"):format(activityName), playerServerId)
 end
 
 function NotifyPlayer(_message)
@@ -120,11 +122,13 @@ end
 function CompleteScrapJob()
 	jobActive = false
 	exports["np-activities"]:activityCompleted(activityName, playerServerId, true, "")
+	TriggerServerEvent(("%s:jobEnded"):format(activityName), playerServerId)
 end
 
 function AbandonJob()
 	jobActive = false
 	exports["np-activities"]:activityCompleted(activityName, playerServerId, false, Config.activity_abandonded_message)
+	TriggerServerEvent(("%s:jobEnded"):format(activityName), playerServerId)
 end
 
 -- == Events ==
