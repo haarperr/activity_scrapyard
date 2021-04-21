@@ -8,7 +8,7 @@ Upon accepting a scrapyard job, the player is randomly assigned a scrapyard. Aft
 ## Config
 **shared/scrapyards.lua** - Each scrapyard has many variables which can be changed, including where the cars can spawn, where the scrap/destroy zones are, how many workers can be active at a time, and more.
 
-**config/cars.lua** - Cars are also configurable. The percentage of missing parts, likliness of impacts, which models can spawn, and how often eat model can spawn can be changed.
+**config/cars.lua** - Cars are also configurable. The percentage of missing parts, likliness of impacts, which models can spawn, and how often each model can spawn can be changed.
 
 **config/config.lua** - The activity's name, description, task info, and the number of cars to scrap per job can all be altered here.
 
